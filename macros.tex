@@ -1,0 +1,56 @@
+%
+% Make _ a character except in math.
+%
+\AtBeginDocument{
+	\catcode`_=12
+	\begingroup\lccode`~=`_\lowercase{\endgroup\let~}\sb
+	\mathcode`_="8000
+}
+
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+\newcommand{\APOSPWP}{\emph{A Primer on Scientific Programming with Python}}
+
+\NewDocumentCommand{\koma}{m}{\textbf{\sffamily{#1}}}
+
+\NewDocumentCommand{\code}{}{\noindent\koma{Kode.} }
+
+\NewDocumentCommand{\out}{}{\noindent\koma{Output.} }
+
+\NewDocumentCommand{\graph}{m}{\includegraphics[width=\linewidth]{graphs/#1}}
+
+\NewDocumentCommand{\remark}{}{\noindent\koma{Kommentar.} }
+
+\NewDocumentCommand{\hint}{}{\noindent\koma{Hint.} }
+
+%
+% The macro \exercisechapter automaticly makes chapter headings for the chapters with exercises.
+%
+\NewDocumentCommand{\exercisechapter}{}{ 
+	\stepcounter{chapter} 
+	\chapter*{Oppgaver til kapittel \thechapter} 
+	\addcontentsline{toc}{chapter}{Oppgaver til kapittel \thechapter}
+}
+
+%
+% The environment exercise{m}{m}[o] automaticly adds heading with numbering with the name of the exercise provided as the first argument and adds the name of the file in the end of the exercise which also is the the label for referencing. This is provided as the second argument. The optinal argument displays a text in the end showing the source.
+%
+\NewDocumentEnvironment{exercise}{m m o}{
+	\refstepcounter{section}
+	\setcounter{subexercise}{0}
+	\section*{Oppgave \thesection: #1}
+	\label{ex:#2}
+	\addcontentsline{toc}{section}{Oppgave \thesection: #1 -- \texttt{#2.py}}
+}%
+{\\\noindent Filnavn: \texttt{#2.py}.
+	\IfValueTF{#3}{\\(Hentet fra \emph{GEO--KJM1040}, oppgave #3.)}{}}
+
+%
+% The macro \subexercise numbers subexercises automaticly similar to \item in the enumerate-enrionment.
+%
+\newcounter{subexercise}
+\renewcommand\thesubexercise{\alph{subexercise}}
+\NewDocumentCommand{\subexercise}{}{
+	\setlength{\parskip}{1em} 
+	\stepcounter{subexercise} 
+	\noindent\koma{\thesubexercise) }} 
