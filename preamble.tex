@@ -1,0 +1,113 @@
+% !TeX root = exercises.tex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = nb_NO
+
+\RequirePackage[l2tabu, orthodox]{nag} % Warn about common mistakes
+
+%\RequirePackage{fixltx2e} % Fix some bugs in LaTeX2e
+
+\RequirePackage{fix-cm}
+
+\documentclass[paper=a4]{scrbook} % KOMA-script book class
+
+\pagestyle{empty}
+
+\usepackage[T1]{fontenc} % Make similar-looking symbols the same
+
+\usepackage[norsk]{babel} % Use Norwegian for automaticly generated text
+
+\usepackage{microtype} % Improve typography
+
+\usepackage{icomma}
+
+\usepackage{verbatim}
+
+\usepackage{comment} % Adds the comment environment
+
+\usepackage{booktabs} % Improve tables
+
+\usepackage{fixmath} % Improve math
+
+\usepackage{commath} % Differentials
+\usepackage{amsmath} % Various macros for typesetting math
+
+\usepackage{mathtools} % Extension of amsmath
+
+%\usepackage[all, warning]{onlyamsmath}
+
+\usepackage{amsfonts} % Provides some additional fonts
+
+\usepackage{enumitem} % More control over the symbols in lists
+
+\usepackage{siunitx} % Units
+\sisetup{output-decimal-marker = {,}} % Use comma as decimal marker in siunitx
+\sisetup{exponent-product = \cdot}
+\sisetup{output-product = \cdot}
+%\sisetup{per-mode=fraction}
+%\sisetup{fraction-function=\tfrac}
+\DeclareSIUnit{\atmosphere}{atm}
+\DeclareSIUnit{\atom}{atomer}
+\DeclareSIUnit{\neutron}{\text{nøytroner}}
+\DeclareSIUnit{\days}{dager}
+\let\molar\undefined
+\DeclareSIUnit{\molar}{M}
+
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+	pdftoolbar=false,        % show Acrobat’s toolbar?
+	pdfmenubar=false,        % show Acrobat’s menu?
+	pdffitwindow=false,     % window fit to page when opened
+	pdfstartview={FitW},    % fits the width of the page to the window
+	pdfauthor={Sverre Løyland},     % author
+	pdfsubject={Alternative oppgaver for kjemistudenter som tar INF1100},   % subject of the document
+	pdfcreator={Sverre Løyland},   % creator of the document
+}
+
+\usepackage{chemmacros} % Various chemistry related macros
+
+\usepackage{fancyvrb} % Better verbatim environment
+
+\usepackage{todonotes} % Todo notes in margin and list of todos
+
+\usepackage{xparse} % Easier declaration of macros
+
+\usepackage[absolute,overlay]{textpos} % Position text by coordinates
+\setlength{\TPHorizModule}{1mm} % Horizontal unit is 1 mm
+\setlength{\TPVertModule}{1mm} % Vertical unit is 1 mm
+
+\usepackage{etoolbox}
+\makeatletter
+\preto{\@verbatim}{\topsep=0em \partopsep=0em}
+\makeatother
+
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+\lstdefinestyle{gedit}{
+	language=Python,
+	basicstyle=\ttfamily,
+	commentstyle=\ttfamily\color{deepred},
+	keywordstyle=\ttfamily\color{deepblue},
+	stringstyle=\color{deepgreen},
+	frame=l,                        
+	showstringspaces=false,
+	numbers=left,
+	numberstyle=\footnotesize,
+	tabsize=4,
+	breaklines=true, postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
+}
+
+\lstdefinestyle{terminal}{
+	basicstyle=\ttfamily,
+	frame=l,                        
+	showstringspaces=false,
+	numberstyle=\footnotesize,
+	breaklines=true, postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
+}
+
+\hypersetup{pdftitle={Kjemirettede oppgaver til INF1100}}
+
+\input{macros}

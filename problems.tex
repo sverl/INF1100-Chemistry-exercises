@@ -1,0 +1,629 @@
+% !TeX root = exercises.tex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = nb_NO
+
+\exercisechapter
+	
+\begin{exercise}{Glukose}{glucose}
+	På en vekt måler en kjemiker opp \SI{3,243}{\gram} glukose, \ch{C6H12O6}, som skal brukes i en reaksjon.
+	
+	\subexercise Lag et Python-skript som beregner og printer den molare massen til glukose fra de molare massene til karbon, hydrogen og oksygen.
+	
+	\subexercise Modifiser skriptet ditt så den beregner og printer hvor mange mol glukose det er.
+	
+	\subexercise Modifiser skriptet ditt så den beregner og printer omtrent hvor mange atomer glukose det er.
+\end{exercise}
+
+\begin{exercise}{Nernst likning}{nernst_equation}
+	Nernst likning er gitt ved
+	\begin{equation*}
+		E_\mathrm{celle}=E^\circ_\mathrm{celle}-\frac{RT}{neN_A}\ln Q
+	\end{equation*}
+	og beskriver cellepotensialet til en elektrokjemisk celle der $E_\mathrm{celle}$ er cellepotensialet, $E^\circ_\mathrm{celle}=E^\circ_\mathrm{oks}+E^\circ_\mathrm{red}$ er standard cellepotensialet, $R=\SI{8.31}{\joule\per\kelvin\per\mole}$ er gasskonstanten, $n$ er antallet elektroner som blir overført i redoksreaksjonen, $e=\SI{1.60e-19}{\coulomb}$ er elementærladningen, $N_A=\SI{6.02e23}{\per\mole}$ er Avogadros tall og $Q$ er reaksjonskoeffisienten.
+	
+	I en bestemt elektrokjemisk celle skjer halvreaksjonene
+	\begin{align*}
+		\ch{Cd\sld &-> Cd^{2+}{\aq} + 2 e-} &&E^\circ_\mathrm{oks}=\SI{0,403}{\volt}\\
+		\ch{Pb^{2+}{\aq} + 2 e- &-> Pb\sld} &&E^\circ_\mathrm{red}=\SI{-0.126}{\volt}. 
+	\end{align*}
+	
+	Bruk Python til å beregne og printe $E_\mathrm{celle}$ for en celle ved \SI{25}{\celsius} der konsentrasjonene av \ch{Cd^{2+}} og \ch{Pb^{2+}} er henholdsvis \SI{0,0656}{M} og \SI{0,192}{M}. Bruk variabler.
+\end{exercise}
+
+\begin{exercise}{Ideelle gasser}{ideal_gas}[2.2]
+	For en ideell gass gjelder den ideelle gassloven
+	\begin{equation*}
+		pV=RnT,
+	\end{equation*}
+	der $p$ er trykk, $V$ er volum, $n$ er stoffmengde, $R=\SI{8.314}{\joule\per\kelvin\per\mole}$ og $T$ er absolutt temperatur. 
+	
+	\subexercise Finn stoffmengden til en idealgass som oppbevares i en ballong på \SI{4}{\liter} under standardbetingelser\footnote{International Union of Pure and Applied Chemistry (IUPAC) definerer standard trykk og temperatur som henholdsvis \SI{100000}{\pascal} og \SI{0}{\celsius}.}. Regn ved hjelp av variabler.
+	
+	\subexercise Den tomme ballongen ble veid til \SI{4,376}{\gram} før den ble fylt, mens den fylte ballongen ble veid til \SI{11,45}{\gram}. Hva er den molare massen til gassen?
+	
+	\subexercise Hvilken gass tror du det er?
+\end{exercise}
+
+\begin{exercise}{Reelle gasser}{real_gas}[2.4]
+	Det molare volumet til en gass er definert som
+	\begin{equation*}
+		V_m=\frac Vn=\frac{ M_m}{\rho}
+	\end{equation*}
+	der $V_m$ er det molare volumet, $V$ er volumet, $n$ er stoffmengden, $M_m$ er den molare masen og $\rho$ er tettheten.
+	
+	\subexercise Beregn det molare volumet til \ch{SF6} med $\rho=\SI{6,602}{\gram\per\liter}$.
+	
+	\subexercise Den ideelle gasslikningen på molar form er
+	\begin{equation*}
+		pV_m = RT.
+	\end{equation*}
+	der $p$ er trykk, $R$ er gasskonstanten og $T$ er absolutt temperatur. Bestem trykket til \ch{SF6} ved \SI{25}{\celsius} når man antar at det er ideell gass.
+	
+	\subexercise van der Waals likning på molar form er
+	\begin{equation*}
+		\left( p+\frac{a}{V_m^2}\right) \left( V_m-b\right) =RT.
+	\end{equation*}
+	For \ch{SF6} er $a=\SI{7,857e-1}{\pascal\cdot\meter^6\per\mole\squared}$ og  $b=\SI{0,08786e-3}{\meter\cubed\per\mole}$. Bestem trykket.
+	
+	\subexercise Holder det å bruke idealgasslikningen eller må man bruke van der Waals likning?
+\end{exercise}
+
+\exercisechapter
+
+\begin{exercise}{Energinivåer}{energy_levels}
+	Det $n$-te energinivået til et elektron i et hydrogenatom er gitt ved
+	\begin{equation*}
+		E_n = -\frac{m_\mathrm{e}e^4}{8\varepsilon_0^2h^2}\cdot\frac{1}{n^2}
+	\end{equation*}
+	der $m_\mathrm{e}=\SI{9,1094e-31}{\kilogram}$ er elektronmassen, $e=\SI{1,6022e-19}{\coulomb}$ er elementærladningen, $\varepsilon_0=\SI{8,8542e-12}{\coulomb\squared\second\squared\per\kilogram\per\meter\cubed}$ er den elektriske tomromspermittiviteten og $h=\SI{6,6261e-34}{\joule\second}$.
+	
+	\subexercise Lag et skript som printer energien til energinivåene for $n=1,\ldots,20$.
+	
+	Energien som frigjøres når et elektron går fra det $n_\mathrm{i}$-te energinivået til det $n_\mathrm{f}$-te energinivået er gitt ved
+	\begin{equation*}
+	\Delta E = -\frac{m_\mathrm{e}e^4}{8\varepsilon_0^2h^2}\cdot\left( \frac{1}{n_\mathrm{i}^2}-\frac{1}{n_\mathrm{f}^2}\right) .
+	\end{equation*}
+	
+	\subexercise Modifiser skriptet slik at det lager en fin tabell der cellen den $\mathrm{i}$-te raden og $\mathrm{f}$-te kolonnen viser energien som frigjøres når et elektron går fra det $n_\mathrm{i}$-te energinivået til det $n_\mathrm{f}$-te energinivået for $\mathrm{i},\mathrm{f}=1,\ldots,5$.
+\end{exercise}
+
+\begin{exercise}{Elektronskall}{electrons_in_shell}
+	Antallet elektroner som det er mulig å ha i det $n$-te elektronskallet er gitt ved
+	\begin{equation*}
+		2n^2.
+	\end{equation*}
+	
+	\subexercise Lag et Python-skript som printer ut $n$ og antallet elektroner det er plass til i det $n$-te fint formatert for $n=1,\ldots,7$.
+	
+	\subexercise Det første skallet kalles K-skallet, det andre, L-skallet, det tredje, M-skallet og så videre. Modifiser skriptet ditt slik at navnet på det $n$-te skallet printes i stedet for $n$.
+	
+	\hint Du kan du konvertere en bokstav, for eksempel K, til et representativt tall med funksjonen \texttt{ord('K')} og tilbake med funksjonen \texttt{chr(75)}.
+	
+	\subexercise Elektronskall består av underskall som igjen består av orbitaler. Det $n$-te skallet består av $n$ underskall. Det $l$-te underskallet består av $2l+1$ orbitaler der $l=0,\ldots,n-1$. Hver orbital kan holde to elektroner. Modifiser skriptet ditt slik at den beregner antallet elektroner hvert skall kan holde fra informasjonen i denne oppgaven. Stemmer det overens med svaret i \koma{a} og \koma{b}?
+\end{exercise}
+
+\exercisechapter
+
+\begin{exercise}{Nernst likning som funksjon}{nernst_function}
+	Lag en funksjon \texttt{E_cell(E0_cell, n, Q, T=273.15)} som beregner cellepotensialet til en celle med standard cellepotensial \texttt{E0cell} der \texttt{n} elektroner blir overført og reaksjonskoeffisienten er \texttt{Q} ved temperaturen \texttt{T}, se oppgave \ref{ex:nernst_equation}.
+	
+	Test funksjonen ved å løse oppgave \ref{ex:nernst_equation} og sammenlikne svarene.
+\end{exercise}
+
+\begin{exercise}{Funksjon for energi i elektronskall}{electron_shell_function}
+	Lag en funksjon \texttt{DeltaE(ni, nf=None)} som returnerer energien som frigjøres når et elektron går fra det \texttt{ni}-te skallet i hydrogenatomet til det \texttt{nf}-te skallet. Dersom \texttt{nf} ikke spesifiseres skal funksjonen kun returnerer energien til elektronet i det \texttt{ni}-te skallet. \texttt{ni} og \texttt{nf} skal være både tall og navnet til skallet, se oppgave \ref{ex:energy_levels}.
+	
+	Test funksjonen ved å putte inn noen verdier og sammenligne med oppgave \ref{ex:energy_levels}.
+\end{exercise}
+
+\begin{exercise}{pH-titrering}{pH_titration}
+	Når \SI{250}{\milli\liter} \SI{0.3}{M} eddiksyre titreres med \SI{0.5}{M} natriumhydroksid er $\mathrm{p}H$en gitt ved
+	\begin{equation*}
+		\mathrm{p}H = 
+		\begin{dcases}
+			\frac12\left( \mathrm{p}K_\mathrm{a}-\lg c_\mathrm{a}\right) &\mbox{hvis }n_\mathrm{b}=0 \\
+			\mathrm{p}K_\mathrm{a}+\lg\frac{n_\mathrm{b}}{n_\mathrm{a}-n_\mathrm{b}}&\mbox{hvis }0<n_\mathrm{b}<n_\mathrm{a}\\
+			14+\frac12\lg\left( \frac{c_\mathrm{a}c_\mathrm{b}}{c_\mathrm{a}+c_\mathrm{b}}K_\mathrm{b}\right) &\mbox{hvis }n_\mathrm{b}=n_\mathrm{a}\\
+			14+\frac12\mathrm{p}K_\mathrm{a}+\lg\frac{n_\mathrm{b} -n_\mathrm{a}}{V_\mathrm{a}+V_\mathrm{b}}&\mbox{hvis }n_\mathrm{b}>n_\mathrm{a}
+		\end{dcases}
+	\end{equation*}
+	der $\mathrm{p}K_\mathrm{a}=4.76$, $n$ er stoffmengde, $c$ er konsentrasjon og $V$ er volum. $\mathrm{a}$ representerer syre og $\mathrm{b}$ representerer base.
+	
+	Lag en funksjon \texttt{pH(Vb)} som returnerer $\mathrm{p}H$en i løsningen der \texttt{Vb} er volum tilsatt base.
+	
+	Test funksjonen ved å putte inn noen verdier som tilsvarer pH ved start, halvtitrerpunktet og ekvivalenspunktet.
+\end{exercise}
+
+\begin{exercise}{Orbitalsannsynlighet}{orbital_probability}[11.1]
+	Sannsynligheten for å finne elektronet i 1s-orbitalen i hydrogenatomet i en avstand mindre enn $x$ er gitt ved
+	\begin{equation*}
+		\int_0^x r^2 \cdot \left( 2a_0^{-\frac32}\cdot e^{-\frac{r}{a_0}}\right) ^2\ \dif r
+	\end{equation*}
+	der $a_0=\SI{5.292e-11}{\meter}$ er Bohrradien.
+	
+	\subexercise Bruk trapesmetoden fra oppgave 3.6 i \APOSPWP\ til å bestemme medianavstanden, den avstanden der det er like sannsynlig å finne elektronet innenfor som utenfor.
+	
+	\subexercise Hvor langt unna kjernen må man for at det skal være 99 \% sannsynlig å finne elektronet innenfor.
+\end{exercise}
+
+\exercisechapter
+
+\begin{exercise}{Forbedring av skript for Nernst likning}{nernst_equation2}
+	\subexercise Lag en ny versjon av funksjonen i oppgave \ref{ex:nernst_equation} der det sjekkes om temperaturen som oppgis er negativ. Hvis den er det, lag en \texttt{ValueError}.
+	
+	\subexercise Gjør sånn at skriptet kan kjøres fra kommandolinjen med parametrene \texttt{-E0}, \texttt{-n}, \texttt{-Q} og alternativt \texttt{-T}.
+	
+	Test funksjonen ved å sammenlikne svarene med oppgave \ref{ex:nernst_equation} og \ref{ex:nernst_function}.
+\end{exercise}
+
+\begin{exercise}{Forbedring av skript for titrering}{pH_titration2}
+	\subexercise Lag en ny versjon av funksjonen i oppgave \ref{ex:pH_titration} der det sjekkes om \texttt{Vb} som oppgis er negativ. Hvis den er det, lag en \texttt{ValueError}.
+	
+	\subexercise Gjør sånn at skriptet spør om konsentrasjonen til syren. Hvis brukeren ikke gir meningsfylt input, spør igjen inntil det gis noe meningsfylt.
+	
+	Test funksjonen ved å sammenlikne med svarene med oppgave \ref{ex:pH_titration}.
+\end{exercise}
+
+\exercisechapter
+
+\begin{exercise}{Statistikkfunksjoner}{statistic_functions}
+	I denne oppgaven skal du lage dine \emph{egne} funksjoner for å gjøre enkle statistiske beregninger. I alle deloppgaven skal du ta utgangspunkt i at du får en liste $x_1, x_2, \ldots, x_n$ med data som input.
+	
+	\subexercise Det aritmetiske gjennomsnittet er gitt ved
+	\begin{equation*}
+	\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i.
+	\end{equation*}
+	Lag en funksjon \texttt{mean} som regner ut gjennomsnittet.
+	
+	\subexercise Den empiriske variansen til et datasett er gitt ved
+	\begin{equation*}
+	V_x = \frac{1}{n}\sum\limits_{i=1}^{n}\left( \bar{x}-x_i\right)^2. 
+	\end{equation*}
+	Lag en funksjon \texttt{variance} som regner ut variansen.
+	
+	\subexercise Det empiriske standardavviket er gitt ved
+	\begin{equation*}
+	s_x=\sqrt{V}.
+	\end{equation*}
+	Lag en funksjon \texttt{standard_deviation} som regner ut standardavviket.
+	
+	\subexercise Korrelasjonen mellom to datasett er gitt ved
+	\begin{equation*}
+	r_{xy}=\frac{1}{n-1}\cdot\frac{1}{s_x s_y}\cdot \sum_{i=1}^{n}\left( \bar{x}-x_i\right) \left( \bar{y}-y_i\right) .
+	\end{equation*}
+	Lag en funksjon \texttt{correlation} som regner ut korrelasjonen.
+	
+	\subexercise Relativt standardavvik er gitt ved
+	\begin{equation*}
+	s_{x,r} = \frac{s_x}{\bar{x}}.
+	\end{equation*}
+	Lag funksjonen \texttt{relative_standard_deviation} som regner ut det relative standardavviket.
+	
+	\subexercise Funksjonsuttrykket for enkel, lineær regresjon mellom to datasett er
+	\begin{equation*}
+	y=\alpha+\beta x,
+	\end{equation*}
+	der $\alpha=\bar{y}-\beta\bar{x}$ og $\beta=r_{xy} s_y/s_x$. Lag en funksjon \texttt{simple_linear_regression} som gitt et datasett og en $x$-verdi regner ut en passende $y$-verdi.
+	
+	\subexercise Lag en funksjon \texttt{simple_linear_regression_plot} som plotter datasettene og lineærregresjonen.
+\end{exercise}
+
+\begin{exercise}{Stirlings approksimasjon}{stirling}[6.3]
+	Boltzmanns formel for absolutt entropi er
+	\begin{equation*}
+	S = k_B\ln W,
+	\end{equation*}
+	der $S$ er entropi, $k_B$ er Boltzmanns konstant og $W$ er den statistiske vekten til en konfigurasjon. I forbindelese med utregning av $W$ møter man ofte på uttrykket $N!$. En av grunnene til at $S$ er definert med $\ln$ er at det er lett å gjøre approksimasjoner av uttrykket $\ln N!$. En av disse approksimasjonene er \emph{Stirlings approksimasjon} som er
+	\begin{equation*}
+	\ln N! \approx N \ln N -N
+	\end{equation*}
+	der feilen blir mindre når $N$ blir større.
+	
+	\subexercise Lag et program som plotter $\ln N!$ og Stirlings approksimasjon i samme plot for $N=1,\ldots,100$.
+	
+	\subexercise Plot feilen i Stirlings approksimasjon for $N=1,\ldots,100$. 100 partikler er ikke mange, er det stort sett akseptabelt å bruke Stirlings approksimasjon?
+\end{exercise}
+
+\begin{exercise}{Spektrofotometri}{spectrofotometry}[9.2]
+	Man kan bruke kolorimetri for å bestemme konsentrasjonen til en løsningen hvis løsningen har farge. Dette gjøres ved at man lager flere løsninger med kjent konsentrasjon, kalt standardløsninger, og måler hvor mye lys de absorberer. Så kan man gjøre lineærregresjon på dataene. Når man skal finne konsentrasjonen til en ukjent løsning, måler man absorbansen og kan ut fra regresjonen lese ut tilnærmet konsentrasjon.
+	
+	Konsentrasjon og absorbans til seks standardløsninger måles til
+	
+	{\renewcommand{\arraystretch}{1.2}
+		\centering
+		\begin{tabular}{ll}
+			\toprule $c\ \left[ \si{\milli\gram\per\liter} \right]$ & absorbans \\ 
+			\midrule 0 & 0.001 \\ 
+			0.2 & 0.184 \\ 
+			0.4 & 0.346 \\ 
+			0.6 & 0.465 \\ 
+			0.8 & 0.686 \\ 
+			1.0 & 0.727 \\ 
+			\bottomrule
+		\end{tabular}\par
+	}
+	
+	\subexercise Bruk funksjonene fra oppgave \ref{ex:statistic_functions} til å lage en kalibreringskurve.
+	
+	\subexercise Korrelasjonen kvadrert sier noe om hvor bra en lineær regresjonslinje passer. Hvis $r^2$ er nærme $1$ passer den bra, men hvis den er nærme $0$ passer den dårlig. Hva er $r^2$?
+	
+	\subexercise Tre prøver fortynnes 250 ganger. Absorbansen måles til 0,495, 0,493 og 0,498. Regn ut konsentrasjonene i de tre prøvene. Hva er gjennomsnittet og standardavvikene?
+\end{exercise}
+
+\begin{exercise}{pH-måling}{pH_measuring}[12.1]
+	De tre vanligste måten for å bestemmer pH i en løsning er med pH-papir, titrering og pH-elektrode. En kjemiker måler pHen i Coca Cola med de tre metodene, og hvert eksperiment blir gjennomført 100 ganger. Resultatene fra målingene er på \url{http://heim.ifi.uio.no/~inf1100/kjemi/pH_data.dat}.
+	
+	\subexercise Beregn gjennomsnittet for hvert av eksperimentene.
+	
+	\subexercise Beregn standardavviket for hvert av eksperimentene.
+	
+	\subexercise Beregn det relative gjennomsnittet for hvert av eksperimentene.
+	
+	\subexercise Kjemikeren godtar bare resultater der det relative standardavviket er mindre enn 5 \%. Oppfyller noen av eksperimentene dette kravet?
+	
+	\subexercise Plot histogrammene til de tre eksperimentene med 20 stolper.
+\end{exercise}
+
+\begin{exercise}{Bjerrumplot}{bjerrum_plot}
+	Likevektskonsentrasjonene til \ch{CO2\aq}, \ch{HCO3^-\aq} og \ch{CO3^{2-}\aq} er avhengig av pHen i løsningen. Andelen av konsentrasjonene til hver er gitt ved
+	\begin{align*}
+		\left[ \ch{CO2\aq}\vphantom{\ch{H^+\aq}}\right] &= \frac{\left[ \ch{H^+\aq}\right]^2 }{\left[ \ch{H^+\aq}\right]^2+K_1\left[ \ch{H^+\aq}\right]+K_1K_2},\\
+		\left[ \ch{HCO3^-\aq}\vphantom{\ch{H^+\aq}}\right] &= \frac{K_1\left[ \ch{H^+\aq}\right] }{\left[ \ch{H^+\aq}\right]^2+K_1\left[ \ch{H^+\aq}\right]+K_1K_2},\\
+		\left[ \ch{CO3^{2-}\aq}\right] &= \frac{K_1K_2}{\left[ \ch{H^+\aq}\right]^2+K_1\left[ \ch{H^+\aq}\right]+K_1K_2}
+	\end{align*}
+	der $K_1=\SI{5,01e-7}{}$ og $K_2=\SI{4,79e-11}{}$ er likevektskonstantene for reaksjonene \ch{CO2 + H2O <=> H^+ + HCO3^-} og \ch{HCO3^- <=> H^+ + CO3^{2-}}.
+	
+	\subexercise Plot konsentrasjonene av \ch{CO2\aq}, \ch{HCO3^-\aq} og \ch{CO3^{2-}\aq} i samme vindu mot pHen. La $\mathrm{pH}\in\left[ 4, 12\right] $.
+	
+	\subexercise Hvor skjærer kurvene til $\left[ \ch{CO2\aq}\right]$ og $\left[ \ch{HCO3^-\aq} \right]$ hverandre og hvor skjærer kurvene til $\left[ \ch{HCO3^-\aq} \right]$ og $\left[ \ch{CO3^{2-}\aq}\right]$ hverandre?
+\end{exercise}
+
+\begin{exercise}{Haber-Bosch-prosessen}{Haber_Bosch}[12.2]
+	Haber-Bosch-prosessen bruker for å fremstiller ammoniakk ved likevektsreaksjonen
+	\begin{equation*}
+	\ch{N2+3H2<=>2NH3}.
+	\end{equation*}
+	
+	Likevekter oppfyller likningene
+	\begin{align*}
+	\Delta_\mathrm{r}G&=-RT\ln K_\mathrm{eq}\\
+	\Delta_\mathrm{r}G&=\Delta_\mathrm{r}H-T\Delta_\mathrm{r}S
+	\end{align*}
+	der $R$ er gasskonstanten og $T$ er temperaturen.
+	
+	Data for temperatur og likevektskonstanter er i filen \url{http://heim.ifi.uio.no/~inf1100/kjemi/data_121.dat}.
+	
+	\subexercise Beregn $\Delta_\mathrm{r}G$ for hver temperatur.
+	
+	\subexercise Plot $\Delta_\mathrm{r}G$ mot $T$.
+	
+	\subexercise Utfør lineærregresjon og bestem $\Delta_\mathrm{r}H$ og $\Delta_\mathrm{r}S$.
+	
+	\subexercise Det viser seg at $\Delta_\mathrm{r}H=\SI{-92,22}{\kilo\joule\per\mole}$. Hva er den relative feilen? Kan du tenke deg hva den kommer av?
+\end{exercise}
+
+\begin{exercise}{Damptrykk}{vapor_pressure}[14.3]
+	Alle kondenserte faser, det vil si væsker og faste stoffer, har \emph{damptrykk}. Damptrykk er at molekyler flykter fra overflaten og blir til gass. Denne gassen skaper et trykk, damptrykket. Kokepunkt er definert som den temperaturen der damptrykket er lik trykket til omgivelsene. Damptrykket kan beskrives ved Clausius-Clapeyrons likning,
+	\begin{equation*}
+	\underbrace{\ln P\vphantom{\frac11}}_y = \underbrace{- \frac{\Delta_\text{vap}H}{R}}_a\cdot\underbrace{\frac{1}{T}}_x+\underbrace{C\vphantom{\frac11}}_b 
+	\end{equation*}
+	der $P$ er damptrykket, $\Delta_{\text{vap}}H$ er fordampningsentalpien, $R$ er gasskonstanten, $T$ er temperaturen og $C$ er en konstant.
+	
+	\subexercise Last inn temperatur og damptrykk fra filen	\url{http://heim.ifi.uio.no/~inf1100/kjemi/vap_pres.dat} og utfør lineærregresjon.
+	
+	\subexercise Hva er kokepunktet til \ch{Hg}?
+\end{exercise}
+
+\begin{exercise}{Aktiveringsenergi}{activation_energy}
+	Ved hjelp av logaritmer kan Arrhenius likning skrives som 
+	\begin{equation*}
+	\underbrace{\ln k\vphantom{\frac11}}_y = \underbrace{- \frac{E_\text{a}}{R}}_a\cdot\underbrace{\frac{1}{T}}_x+\underbrace{\ln A\vphantom{\frac11}}_b 
+	\end{equation*}
+	der $k$ er reaksjonshastigheten, $E_\text{a}$ er aktiveringsenergien, $R$ er gasskonstanten, $T$ er temperaturen og $A$ er en konstant.
+	
+	Nedbryting av lystgass, \ch{N2O}, til nitrogen og et oksygenatom er en andreordens reaksjon. Reaksjonshastigheten blir målt ved forskjellige temperaturer:\\
+	
+	{\renewcommand{\arraystretch}{1.2}
+		\centering
+		\begin{tabular}{ll}
+			\toprule $k\ \left[ \si{\mole\per\liter\per\second} \right]$ & $t\ \left[ \si{\celsius}\right]$\\ 
+			\midrule \SI{2,374e-3}{} & \SI{600}{} \\
+			\SI{1,196e-2}{} & \SI{650}{} \\
+			\SI{4,681e-2}{} & \SI{700}{} \\
+			\SI{1,390e-1}{} & \SI{750}{} \\
+			\SI{6,856e-1}{} & \SI{800}{} \\
+			\bottomrule 
+		\end{tabular}\par
+	}\ \\
+	
+	\subexercise Plot dataene og finn et uttrykk for den best tilpassede linjen .
+	
+	\subexercise Hva er $E_a$ og $A$?
+\end{exercise}
+
+\begin{exercise}{Bølgefunksjon}{wave_function}
+	For en bestemt partikkel er bølgefunksjonen gitt ved
+	\begin{equation*}
+		\psi(x)=Ae^{-2|x|}e^{-3i}
+	\end{equation*}
+	der $A$ er en konstant og $i$ er den imaginære enheten ($i^2=-1$). For $\psi$ skal være en gyldig bølgefunksjon, må 
+	\begin{equation*}
+		\int_{-\infty}^{\infty}\psi^*(x)\cdot\psi(x)\ \dif x=1
+	\end{equation*}
+	der $\psi*$ er komplekskonjungatet av $\psi$. Beregn $A$.
+\end{exercise}
+
+\begin{exercise}{Bohrs atommodell}{bohrs_model}[6.5]
+	I denne oppgaven skal vi se på bevegelsen til et elektron rundt kjernen i Bohrs atommodell. Dette er en \emph{svært} forenklet modell, men kan illustrere enkelte eksempler. Konvertering fra polare koordinater til kartesiske koordinater gjøres ved
+	\begin{align*}
+		x&=r\cos\theta,\\
+		y&=r\sin\theta
+	\end{align*}
+	der $r$ er avstanden til origo og $\theta$ er vinkelen fra $x$-aksen til punktet.
+	
+	\subexercise Plot en sirkel ved å holde $r$ konstant og variere $\theta$.
+	
+	\subexercise I følge de Broglie oppfører elektroner seg som stående bølger som vil si at nullpunktene til bølgen ikke endrer seg. Legg inn en slik bølge ved å la $r=r_0+A\sin(n\theta)$ det $r_0$ er gjennomsnittlig avstand til origo, $A$ er amplituden og $n$ er antall nullpunkter per omdreining. $A$ bør være liten i forhold til $r_0$.
+	
+	\subexercise Hva skjer om $n$ ikke er et heltall?
+	
+	\hint Prøv med flere omdreininger.
+\end{exercise}
+
+\begin{exercise}{Orbitalplott}{orbital_plot}[13.2]
+	Tverrsnitt av orbitalene til et atom med ett elektron kan lett plottes i polarkoordinater siden bølgefunksjonen i et bestemt plan er gitt ved
+	\begin{equation*}
+		\psi(r,\theta)=R(r)\cdot Y_l(\theta).
+	\end{equation*}
+	
+	Følgende tabell gir $R$ og $Y_l$ for noen utvalgte orbitaler.\\
+	
+	{\renewcommand{\arraystretch}{1.2}
+	\centering
+	\begin{tabular}{rll}
+		\toprule Orbital & $R(r)$ & $Y_l(\theta)$\\ 
+		\midrule $1s$ & $\left( \frac{Z}{a_0}\right)^\frac{3}{2}\cdot2\cdot e^{-\frac{\rho}{2}} $ & $\pi^{-\frac12}$ \\
+		$2p_0$ & $\left( \frac{Z}{a_0}\right)^\frac{3}{2}\cdot\frac{1}{2\sqrt 6}\cdot\rho\cdot e^{-\frac{\rho}{2}} $ & $\left( \frac{3}{8\pi}\right)^\frac{1}{2} \cos\theta$ \\
+		$3d_0$ & $\left( \frac{Z}{a_0}\right)^\frac{3}{2}\cdot\frac{1}{9\sqrt{ 30}}\cdot\rho^2\cdot e^{-\frac{\rho}{2}} $ & $\left( \frac{5}{16\pi}\right)^\frac{1}{2} \left( 3\cos^2\theta-1\right) $ \\
+		\bottomrule 
+	\end{tabular}\par
+	}\ \\
+	
+	I tabellen er $\rho=\frac{2Zr}{na_0}$, $a_0=\SI{52,92}{\pico\meter}$, $Z$ er atomnummer og $n$ er skallnummer.
+	
+	Plot $1s$-orbitalen til hydrogen, $2p_0$-orbitalen til karbon og $3d_0$-orbitalen til jern med \texttt{contourf}.
+\end{exercise}
+
+\exercisechapter
+
+\begin{exercise}{Autotitrator}{autotitrator}
+	En autotitrator er et instrument som kan gjøre titreringer, for eksempel pH-titreringer. En autotitrator har titrert \SI{0,05}{M} \ch{NaOH} mot en ukjent, enprotisk syre og skriver pH-verdiene og volum tilsatt base til en filen \url{http://heim.ifi.uio.no/~inf1100/kjemi/autotitrator.dat}. Vi definerer ekvivalenspunktet til det midten av intervallet der stigningen er størst og halvtitrerpunktet til midten av det intervallet der stigningen er minst.
+	
+	\subexercise Hva er ekvivalenspunktet?
+	
+	\subexercise Hva er halvtitrerpunktet?
+	
+	\subexercise Hva er forskjellen mellom halvtitrerpunktet og halve ekvivalenspunktet?
+	
+	\subexercise Hva er $\mathrm{p}K_\mathrm{a}$ til syren?
+\end{exercise}
+
+\begin{exercise}{Grunnstoffdata}{element_data}
+	Filen \url{http://heim.ifi.uio.no/~inf1100/kjemi/periodic_table.csv} inneholder data for alle grunnstoffene. 
+	
+	Lag et skript med funksjonen \texttt{element_data(element, data)} der \texttt{element} er et atomnummer og \texttt{data} er en tekststreng som tilsvarer en ``overskrift'' i datafilen som returnerer dataen for grunnstoffet.
+\end{exercise}
+
+\exercisechapter
+
+\begin{exercise}{Grunnstoff}{element}
+	Lag en klasse \texttt{Element} med klassevariablene
+	\texttt{a_num} som er atomnummeret, \texttt{sym} som symbolet, \texttt{name} som er navnet, \texttt{mass} som er atommassen i u, \texttt{e_config} som er elektronkonfigurasjonen, \texttt{ox_num} som er en liste av vanlige oksidasjonstall, \texttt{melt_pnt} som er smeltepunkt i K, \texttt{boil_pnt} som er kokepunkt i K  og \texttt{el_neg} som er elektronegativiteten. 
+	
+	``Lag'' karbon ved å lage en instans av klassen med riktig data som du kan finne det i et bra periodesystem eller på Internett.
+\end{exercise}
+
+\begin{exercise}{Periodesystemet}{periodic_table}
+	Filen \url{http://heim.ifi.uio.no/~inf1100/kjemi/periodic_table.csv}
+	inneholder data for grunnstoffene. De kommaseparerte kolonnene inneholder data for atomtall, symbol, engelsk navn, atommasse i u, smeltepunkt (K) og kokepunkt (K).
+	
+	\subexercise Lag en klasse \texttt{PeriodicTable} med metoden \texttt{__init__(self, src)}, der \texttt{src} er banen til filen \texttt{periodic_table_simple.csv}, som leser filen og lager instanser av klassen \texttt{Element} fra oppgave \ref{ex:element} for hvert grunnstoff.
+	
+	\subexercise Test at skriptet fungerer ved å printe ut de kjemiske forkortelsene til alle grunnstoffene.
+\end{exercise}
+
+\begin{exercise}{Elektronkonfigurasjon}{electron_configuration}
+	\subexercise Lag et skript med funksjonen \texttt{e_config_long(a_num)} der \texttt{a_num} er et atomnummer som bruker skriptet i oppgave \ref{ex:periodic_table} til å returnere den utvidede elektronkonfigurasjonen, for eksempel $1s^2 2s^2 2p^6 3s^2 3p^6 3d^6 4s^2$ i stedet for $[\ch{Ar}] 3d^6 4s^2$.
+	
+	\subexercise Test at skriptet fungerer ved å printe ut den fullstendige elektronkonfigurasjonen til bly og sjekke at det stemmer.
+\end{exercise}
+
+\begin{exercise}{Bindingstype}{binding_type}[10.1]
+	Bindingstypen mellom to atomer kan grovt sett klassifiseres ut fra forskjellen i elektronegativitet, $\Delta$. \\
+	
+	{\renewcommand{\arraystretch}{1.2}
+		\centering
+		\begin{tabular}{l@{$\Delta$}ll}
+			\toprule 
+			\multicolumn{2}{l}{Forskjell i elektronegativitet} & Type binding \\ \midrule 
+			        &$\ge2,0$ & ionisk \\ 
+			  $2,0>$&$>1,6$   & mellom ionisk og polar kovalent \\ 
+			$1,6\ge$&$\ge0,5$ & polar kovalent \\ 
+			  $0,5>$&$>0,3$   & mellom polar kovalent og upolar kovalent \\ 
+			$0,3\ge$&         & upolar kovalent\\
+			\bottomrule
+		\end{tabular}\par
+	}
+	
+	\subexercise Lag en funksjon \texttt{binding_type(element1, element2)} som tar to instanser av klassen \texttt{Element} fra oppgave \ref{ex:element} og returnerer en tekststreng med bindingstypen.
+	
+	\subexercise Hva slags binding er det i \ch{LiF}, \ch{BrCl}, mellom \ch{K} og \ch{O} i \ch{K2O} og mellom \ch{H} og \ch{C} i \ch{CH4}?
+\end{exercise}
+
+\begin{exercise}{Molekyl}{molecule}
+	Lag en klasse \texttt{Molecule} med metoden \texttt{__init__(formula)} der \texttt{formula} er en tekststreng for molekylformelen (for eksempel \texttt{'CH3Br'}) som har variabelen \texttt{molar_mass} som returnerer den molare massen.
+	
+	Test skriptet ved å regne ut den molare massen til \ch{C12H22O11} og \ch{HCl} ved hjelp av skriptet og for hånd.
+\end{exercise}
+
+\begin{exercise}{Periodiske trender}{periodic_trends}[10.2 og 10.3]
+	\subexercise Plot av elektronaffiniteten mot atomnummer.
+	
+	\subexercise Gjør det samme som i \koma{a}, men med antallet vanlige oksidasjonstall.
+	
+	\subexercise Gjør det samme som i \koma{a}, men med kokepunktet.
+	
+	\subexercise Gjør det samme som i \koma{a}, men med elektronegativiteten.
+\end{exercise}
+
+\begin{exercise}{Diffusjon}{diffusion}
+	Bevegelsen til enkeltpartikler kan ofte beskrives som Brownske bevegelser eller virrevandring. På en vannoverflate legges 1 000 pollenkorn i et punkt. Bevegelsen til pollenkornene kan modelleres ved at for hvert sekund som går beveger hvert korn seg en tilfeldig avstand som er normalfordelt med forventning \SI{0}{\milli\meter} og standardavvik \SI{0.05}{\milli\meter}. 
+	
+	\subexercise Lag video av pollenkornenes posisjon fra 0 til 100 sekunder.
+	
+	\subexercise Lag et plot av gjennomsnittlig avstand til origo kvadrert mot tid. Hva ser du?
+\end{exercise}
+
+\exercisechapter
+
+\begin{exercise}{Radioaktiv stråling}{radioactive_radiation}
+	Sannsynligheten for at en radioaktive kjerne henfaller i løpet av én tidsenhet kalles $\lambda$, og dens sammenheng med halveringstiden, $T_{1/2}$, er
+	\begin{equation*}
+	\lambda \cdot T_{1/2} = \ln 2.
+	\end{equation*}
+	
+	\subexercise Lag et Python-skript som simulerer henfallet av 10 000 atomer ${}^{99}\mathrm{Mo}$ til ${}^{99\mathrm{m}}\mathrm{Tc}$\footnote{m-en betyr at technetiumet er \emph{metastabilt} som betyr at kjernen er eksitert.} og plotter hvor mye det er igjen av ${}^{99}\mathrm{Mo}$ og hvor mye ${}^{99\mathrm{m}}\mathrm{Tc}$ som er produsert i løpet av én uke. Halveringstiden til ${}^{99}\mathrm{Mo}$ er 2,7489 dager.
+	
+	\subexercise ${}^{99\mathrm{m}}\mathrm{Tc}$ henfaller igjen til ${}^{99}\mathrm{Tc}$ som er tilnærmet stabilt på denne tidsskalaen. Halveringstiden til ${}^{99\mathrm{m}}\mathrm{Tc}$ er 6,0058 timer. Modifiser skriptet ditt slik at det plotter hvor mye ${}^{99\mathrm{m}}\mathrm{Tc}$ det er mot tid.
+	
+	\subexercise Lag et plott av hvor mange desintegrasjoner det er per tidsenhet.
+\end{exercise}
+
+\begin{exercise}{Rene isotoper}{pure_isotopes}
+	Til et eksperiment trengs det radioaktivt \ch{^{108}Ag}, og for eksperimentet er det viktig at det ikke er noen andre radioaktive isotoper til stede. 
+	
+	\ch{^{108}Ag} kan produseres ved å bestråle naturlig sølv med nøytroner, men \ch{^{110}Ag} produseres også siden naturlig sølv består av 52 \% \ch{^{107}Ag} og 48 \% \ch{^{109}Ag}. \SI{50}{\gram} naturlig sølv bestråles i \SI{30}{\minute}. Reaksjonshastigheten er 
+	\begin{equation*}
+	R=\sigma\phi N_T,
+	\end{equation*}
+	der $\sigma_{\ch{^{107}Ag}}=\SI{37,65}{\barn}$, $\sigma_{\ch{^{109}Ag}}=\SI{90,26}{\barn}$, $\phi=\SI{1e12}{\neutron\per\second\per\square\centi\meter}$ og $N_T$ er antallet atomer av isotopet som bestråles. $\SI{1}{\barn}=\SI{1e-24}{\square\centi\meter}$. \ch{^{108}Ag} en halveringstid på \SI{2,37}{\minute} og \ch{^{110}Ag} har halveringstid på \SI{24,56}{\second} der begge henfaller til stabile isotoper av kadmium. 
+		
+	\subexercise Plot mengden \ch{^{108}Ag} og \ch{^{110}Ag} mot tid fra starten av strålingen til det praktisk talt ikke er noe \ch{^{108}Ag} eller \ch{^{110}Ag} igjen.
+	
+	\subexercise Hvor lenge etter endt bestråling må man vente for mengden \ch{^{108}Ag} er mer enn 99,9 \% av mengden av radioaktive isotoper til stede?
+\end{exercise}
+
+\exercisechapter
+
+\begin{exercise}{Enheter}{units}
+	Lag en modul \texttt{unit} med klassen \texttt{Unit} som kan gjøre enkel aritmetikk med enheter. Klassen skal initialiseres med metoden \texttt{__init__(self, baseunit)}. Klassen skal kunne gjøre følgende type aritmetikk.\\
+	
+	\begin{verbatim}
+	$ python -i units.py
+	>>> J = kg * m**2 / s**2
+	>>> print J
+	m^2*kg*s^-2
+	\end{verbatim}
+	\
+\end{exercise}
+
+\begin{exercise}{Størrelser}{quantities}
+	Lag en module \texttt{quantity} med klassen \texttt{Quantity} som skal kunne gjøre enkel aritmetikk med tall med enheter. Klassen skal initialiseres med metoden \texttt{__init__(self, value, unit)}. Klassen skal kunne gjøre følgende type aritmetikk.\\
+	
+	\begin{verbatim}
+	$ python -i quantities.py
+	>>> J = kg * m**2 / s**2
+	>>> print J
+	1.0 m^2*kg*s^-2
+	>>> R = 8.3145 * J / K / mol
+	>>> print R
+	8.3145 m^2*kg*s^-2*K^-1*mol^-1
+	>>> NA = mol**-1 * 6.0221e23
+	>>> kB = R / NA
+	>>> print kB
+	1.38066455223261e-23 m^2*kg*s^-2*K^-1
+	>>> a = 5.3 * mol; b = 1.5 * mol
+	>>> print a + b
+	6.8 mol
+	>>> print a - b
+	3.8 mol
+	>>> atm = 101325 * kg / m / s**2; L = 1e-3 * m**3
+	>>> R_alt = 0.082057 * L * atm / K / mol
+	>>> abs(R - R_alt) < 1e-3
+	True
+	\end{verbatim}
+	\
+\end{exercise}
+
+\setcounter{chapter}{0}
+\renewcommand\thechapter{\Alph{chapter}}
+
+\setcounter{chapter}{4}
+
+\exercisechapter
+
+\begin{exercise}{Partikkelakselerator}{particle_accellerator}
+	I en kjernereaktor kan man bestråle naturlig ${}^{98}\mathrm{Mo}$ med nøytroner, og det dannes ${}^{99}\mathrm{Mo}$. Hastigheten til produksjonen er 
+	\begin{equation*}
+		R=\sigma\phi N_T,
+	\end{equation*}
+	der $R$ er reaksjonshastigheten i $\si{\atom\per\second}$, $\sigma$ er tverrsnittet\footnote{Tverrsnittet til en kjerne sier noe om hvor lett den reagerer i kjernereaksjoner.} i $\si{\barn}=\SI{e-24}{\centi\meter\squared}$, $\phi$ er partikkelfluksen\footnote{Hvor mange partikler som strømmer gjennom et areal per tidsenhet.} i $\si{\neutron\per\centi\meter\squared\per\second}$ og $N_T$ er antallet atomer som bestråles.
+	
+	\subexercise \SI{5,00}{\gram} ${}^{98}\mathrm{Mo}$ bestråles av en nøytronståle med fluks lik \SI{e12}{\neutron\per\second\per\centi\meter\squared} i én uke. Tverrsnittet til ${}^{98}\mathrm{Mo}$ er \SI{412}{\milli\barn}. Lag et Python-skript som plotter hvor mye molybden-99 som er blitt produsert.
+	
+	\subexercise ${}^{99}\mathrm{Mo}$ er radioaktivt og henfaller til ${}^{99\mathrm{m}}\mathrm{Tc}$ med en halveringstid på \SI{2,7}{\days}. Lag et plot av hvor mye ${}^{99}\mathrm{Mo}$ som er til stede.
+	
+	\subexercise Etter bestrålingen skal produktet fraktes til et sykehus. Dette tar \SI{2}{\days}. Lag et plot av hvor mye ${}^{99}\mathrm{Mo}$ som er til stede. Hvor mye ${}^{99}\mathrm{Mo}$ får sykehuset levert?
+\end{exercise}
+
+\begin{exercise}{Reaksjonshastighet}{reaction_rate}
+	Syklopropan er ustabilt og brytes ned til propen ved en førsteordens reaksjon. Ved \SI{500}{\celsius} er hastighetskonstanten \SI{6,7e-4}{\per\second}.
+	
+	\subexercise I en beholder er konsentrasjonen av syklopropen \SI{0,25}{\molar}. Plot konsentrasjonen av syklopropan og propen mot tid over én time.
+	
+	Hydrogen og nitrogenmonoksid reagerer og blir til nitrogen og vann ved en reaksjon tredjeordens reaksjon. Reaksjonen er førsteordens med hensyn på hydrogen og andreordens med hensyn på nitrogenmonoksid. Ved \SI{1280}{\celsius} er reaksjonshastigheten \SI{2,5e2}{\per\molar\squared\per\second}.
+	
+	\subexercise I en beholder er det hydrogen og nitrogenmonoksid konsentrasjoner henholdsvis lik \SI{2,92e-2}{\molar} og \SI{5,61}{\molar}. Plot konsentrasjonen av hydrogen, nitrogenmonoksid, nitrogen og vann mot tid over 1 millisekund.
+\end{exercise}
+
+\begin{exercise}{Likevekt}{equilibrium}
+	Reaksjonenhastigheten til reaksjonen
+	\begin{equation*}
+	\ch{2 NO2\gas{} + 7 H2\gas{} -> 2 NH3\gas{} + 4 H2O\lqd{}}
+	\end{equation*}
+	er gitt ved
+	\begin{equation*}
+	r_\mathrm{f} = k_\mathrm{f}\left[\ch{NO2}\right]^2\left[\ch{H2}\right]^7.
+	\end{equation*}
+	
+	Reaksjonenhastigheten til den motsatte reaksjonen
+	\begin{equation*}
+	\ch{2 NH3\gas{} + 4 H2O\lqd{} -> 2 NO2\gas{} + 7 H2\gas{} }
+	\end{equation*}
+	er gitt ved
+	\begin{equation*}
+	r_\mathrm{r} = k_\mathrm{r}\left[\ch{NH3}\right]^2.
+	\end{equation*}
+	
+	Målinger viser at $k_\mathrm{f}=\SI{9.71e-3}{M^{-8}\second^{-1}}$ og $k_\mathrm{r}=\SI{6.18e-2}{M^{-1}\second^{-1}}$.
+	
+	I en lukket beholder er konsentrasjon til \ch{NO2}, \ch{H2} og \ch{NH3} henholdsvis \SI{1,32}{\molar}, \SI{0,98}{\molar} og \SI{1,06}{\molar}.
+	
+	\subexercise Lag er skript som plotter konsentrasjonene av stoffene over ett sekund.
+	
+	\subexercise Plot $\left[\ch{NH3}\right]^2/\left( \left[\ch{NO2}\right]^2\left[\ch{H2}\right]^7\right) $ mot tid.
+	
+	\subexercise Hva er likevektskonstanten for denne reaksjonen, og hvilken sammenheng har den med oppgave \koma{b}?
+\end{exercise}
+
+\begin{exercise}{Enzym}{enzyme}
+	I den enzymkatalyserte reaksjonen
+	\begin{equation*}
+	E + S \underset{k_\mathrm{r}}{\overset{k_\mathrm{f}}{\rightleftharpoons}} ES \overset{k_\mathrm{c}}{\rightarrow} E + P
+	\end{equation*}
+	er alle trinnene førsteordens med hensyn på konsentrasjonen til reaktantene i trinnet. For et bestemt enzym er $k_\mathrm{f}=\SI{8,32e4}{\per \molar\per\second}$, $k_\mathrm{r}=\SI{1,82e-2}{\per\second}$ og $k_\mathrm{c}=\SI{5,06e-2}{\per\second}$.
+	
+	Til en beholder ble enzymer og substrater tilsatt slik at konsentrasjonene ble henholdsvis \SI{1,22}{\micro\molar} og \SI{2,02}{\micro\molar}.
+	
+	Plot konsentrasjonen av substrat, produkt, enzym og enzym-substratkompleks mot tid i samme vindu.
+\end{exercise}
